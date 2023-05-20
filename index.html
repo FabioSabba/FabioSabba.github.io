@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" ><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" ><!--<![endif]-->
+<html>
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Starter Template</title>
+  <!-- Fogli di stile -->
+  <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+  <link href="css/stili-custom.css" rel="stylesheet" media="screen">
+  <!-- Modernizr -->
+  <script src="js/modernizr.custom.js"></script>
+  <!-- respond.js per IE8 -->
+  <!--[if lt IE 9]>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+
+ </head>
+ <body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            <span class="fs-4">Simple header</span>
+          </a>
+    
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+          </ul>
+        </header>
+      </div>
+      <select id="dropdown">
+        <option value="" selected>Seleziona un'opzione</option>
+      </select>
+      <script src="script.js"></script>
+ <!-- jQuery e plugin JavaScript  -->
+ <script src="http://code.jquery.com/jquery.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script>
+    window.addEventListener('DOMContentLoaded', function() {
+    var dropdown = document.getElementById('dropdown');
+  
+    // Richiesta HTTP per ottenere il contenuto del file di testo
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var fileContent = xhr.responseText;
+  
+        // Divide il contenuto del file in righe
+        var lines = fileContent.split('\n');
+  
+        // Aggiungi le opzioni al menu a tendina
+        lines.forEach(function(line) {
+          var option = document.createElement('option');
+          option.text = line.trim();
+          dropdown.add(option);
+        });
+      }
+    };
+  
+    xhr.open('GET', 'elenco_opzioni.txt', true);
+    xhr.send();
+  });
+</script>
+ </body>
+</html>
